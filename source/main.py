@@ -55,7 +55,7 @@ def Simulation():
     mouse_pos = pygame.Vector2(Bug.random_range(0 , screen.get_width()) ,Bug.random_range(0 , screen.get_height()))
     mouse_direction = pygame.Vector2(Bug.random_range(-1 , 1), Bug.random_range(-1 , 1))
 
-    mouseR = 25
+    mouseR = 50
     mouseColor = ( 0 , 255 , 255)
     
 

@@ -96,7 +96,7 @@ class Bug():
 
         if not self.dead:
             #Bug energy decay
-            if Bug.mouse_pos.distance_to(self.pos) > 25:
+            if Bug.mouse_pos.distance_to(self.pos) > 50:
                 if (self.radius >= 1):
                     UE[0] += self.radius * dt * Bug.bug_energy_decay
                     self.radius -= self.radius * dt * Bug.bug_energy_decay  # size tax
@@ -111,8 +111,8 @@ class Bug():
 
             #Runs timer that moves bug at set intervals
             self.change_timer += dt
-            self.thinkFoward()
             if self.change_timer >= self.change_interval:
+                self.thinkFoward()
                 self.change_timer = 0
                 self.change_interval = Bug.random_range(Bug.change_interval_range[0], Bug.change_interval_range[1])
 
