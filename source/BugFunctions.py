@@ -20,7 +20,7 @@ class Bug():
         "canibal": False
     }
 
-    change_interval_range = [ 0 , 10 ]
+    change_interval_range = [ 0 , .1 ]
 
     universe_energy = None
 
@@ -106,11 +106,13 @@ class Bug():
                     return
             else:
                 self._age(dt)
+                UE[0] -= self.radius * dt * Bug.bug_energy_decay
+                self.radius += self.radius * dt * Bug.bug_energy_decay  # size tax
 
             #Runs timer that moves bug at set intervals
             self.change_timer += dt
+            self.thinkFoward()
             if self.change_timer >= self.change_interval:
-                self.thinkFoward()
                 self.change_timer = 0
                 self.change_interval = Bug.random_range(Bug.change_interval_range[0], Bug.change_interval_range[1])
 
@@ -349,7 +351,8 @@ class Bug():
         out, action = self.brain.brainThink()
         horizontal = (out[0] - 0.5) - (out[1] - 0.5)
         vertical   = (out[2] - 0.5) - (out[3] - 0.5)
-        self.speed = 10 - out[4] * 9
+        if len(out) == 5:
+            self.speed = 10 - out[4] * 9
 
         self.do_attack  = action[0] > 0.5
         self.do_breed   = action[1] > 0.5

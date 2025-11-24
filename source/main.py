@@ -46,7 +46,7 @@ def Simulation():
     prev_gen_best = None
     best_bug = None
 
-    amount_of_bugs = 500
+    amount_of_bugs = 150
     bugs_dead = False
     Bug.create_bug_amount(amount_of_bugs , bugs, universe_energy, True)
 

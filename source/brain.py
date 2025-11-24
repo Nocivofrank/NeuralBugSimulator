@@ -5,10 +5,10 @@ class Brain():
 
     #brian row and columns
     input_size = 16
-    hidden_size = 100
-    hidden2_size = 100
-    hidden3_size = 100
-    output_size = 5
+    hidden_size = 200
+    hidden2_size = 200
+    hidden3_size = 200
+    output_size = 4
     
     def __init__(self):
         # weights and biases
